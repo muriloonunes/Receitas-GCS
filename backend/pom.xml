@@ -11,8 +11,8 @@
     <groupId>com.murilo</groupId>
     <artifactId>receitas</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>tarefas</name>
-    <description>tarefas :3</description>
+    <name>receitas</name>
+    <description>receitas :3</description>
     <url/>
     <licenses>
         <license/>
@@ -73,6 +73,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.hm.receitas.ReceitasApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
