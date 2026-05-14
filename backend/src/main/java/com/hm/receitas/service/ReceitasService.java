@@ -1,6 +1,7 @@
 package com.hm.receitas.service;
 
 import com.hm.receitas.entities.Receita;
+import com.hm.receitas.entities.dto.ReceitaDTO;
 import com.hm.receitas.repository.ReceitasRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,19 @@ public class ReceitasService {
         this.receitasRepository = receitasRepository;
     }
 
-    public Receita criar(Receita receita) {
-        if (receitasRepository.existsByNome(receita.getNome())) {
-            throw new IllegalArgumentException("Já existe uma receita cadastrada com este nome.");
+    public Receita criar(ReceitaDTO receitaDTO) {
+        if (receitasRepository.existsByNome(receitaDTO.nome())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe uma receita cadastrada com este nome.");
         }
+        Receita receita = new Receita();
+        receita.setNome(receitaDTO.nome());
+        receita.setCategoria(receitaDTO.categoria());
+        receita.setTempoPreparo(receitaDTO.tempoPreparo());
+        receita.setPorcoes(receitaDTO.porcoes());
+        receita.setIngredientes(receitaDTO.ingredientes());
+        receita.setModoPreparo(receitaDTO.modoPreparo());
         receita.setDataCadastro(LocalDateTime.now());
+
         return receitasRepository.save(receita);
     }
 

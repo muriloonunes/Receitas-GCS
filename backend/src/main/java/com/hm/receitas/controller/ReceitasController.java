@@ -1,6 +1,7 @@
 package com.hm.receitas.controller;
 
 import com.hm.receitas.entities.Receita;
+import com.hm.receitas.entities.dto.ReceitaDTO;
 import com.hm.receitas.service.ReceitasService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class ReceitasController {
     }
 
     @PostMapping
-    public ResponseEntity<Receita> criar(@Valid @RequestBody Receita receita) {
-        Receita novaReceita = service.criar(receita);
+    public ResponseEntity<Receita> criar(@Valid @RequestBody ReceitaDTO receitaDTO) {
+        Receita novaReceita = service.criar(receitaDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaReceita);
     }
 
