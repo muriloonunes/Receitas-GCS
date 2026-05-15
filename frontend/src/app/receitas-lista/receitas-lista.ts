@@ -14,7 +14,55 @@ import { Receita } from '../models/receita.model';
 })
 export class ReceitasLista implements OnInit {
   private recipeService = inject(RecipeService);
-  receitas: Receita[] = [];
+  receitas: Receita[] = [
+    // {
+    //   id: 1,
+    //   nome: 'Bolo de Chocolate',
+    //   categoria: 'DOCE',
+    //   tempoPreparo: 45,
+    //   porcoes: 8,
+    //   ingredientes: [
+    //     '2 xícaras de farinha de trigo',
+    //     '1 xícara de chocolate em pó',
+    //     '2 xícaras de açúcar',
+    //     '3 ovos',
+    //     '1 xícara de leite',
+    //     '1/2 xícara de óleo',
+    //   ],
+    //   modoPreparo:
+    //     'Misture todos os ingredientes secos. Adicione os ovos, leite e óleo. Bata bem e asse em forno preaquecido a 180°C por 40 minutos.',
+    //   dataCadastro: new Date().toISOString(),
+    // },
+    // {
+    //   id: 2,
+    //   nome: 'Pizza Margherita',
+    //   categoria: 'SALGADO',
+    //   tempoPreparo: 30,
+    //   porcoes: 4,
+    //   ingredientes: [
+    //     '1 massa de pizza',
+    //     '200g de mussarela',
+    //     '3 tomates',
+    //     'Manjericão fresco',
+    //     'Azeite',
+    //     'Sal a gosto',
+    //   ],
+    //   modoPreparo:
+    //     'Abra a massa, adicione o molho de tomate, mussarela fatiada, tomates em rodelas e manjericão. Regue com azeite e asse por 15-20 minutos a 220°C.',
+    //   dataCadastro: new Date().toISOString(),
+    // },
+    // {
+    //   id: 3,
+    //   nome: 'Suco de Laranja Natural',
+    //   categoria: 'BEBIDA',
+    //   tempoPreparo: 5,
+    //   porcoes: 2,
+    //   ingredientes: ['6 laranjas', 'Açúcar a gosto (opcional)', 'Gelo'],
+    //   modoPreparo:
+    //     'Esprema as laranjas, coe se preferir, adicione açúcar a gosto e sirva com gelo.',
+    //   dataCadastro: new Date().toISOString(),
+    // },
+  ];
 
   ngOnInit(): void {
     this.carregarReceitas();

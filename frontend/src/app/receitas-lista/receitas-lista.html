@@ -1,27 +1,29 @@
-<div class="container p-4">
-  <div class="flex justify-content-between align-items-center mb-4">
+<div class="recipe-list-container">
+  <header class="recipe-list-header">
     <h2>Minhas Receitas</h2>
     <p-button label="Nova Receita" icon="pi pi-plus" routerLink="/receitas/nova"></p-button>
-  </div>
+  </header>
 
   @if (receitas.length === 0) {
-    <div class="text-center p-5 bg-light border-round">
-      <i class="pi pi-inbox text-4xl text-500 mb-3"></i>
-      <p class="text-500 text-xl">Nenhuma receita encontrada.</p>
+    <div class="recipe-empty-state">
+      <p class="recipe-empty-state-text">Nenhuma receita encontrada.</p>
     </div>
   }
-  <div class="grid">
-    <div class="col-12 md:col-6 lg:col-4" *ngFor="let receita of receitas">
-      <p-card [header]="receita.nome" [subheader]="receita.categoria">
-        <p>
-          <i class="pi pi-clock mr-2"></i>
-          Tempo de preparo: {{ receita.tempoPreparo }} min
-        </p>
-        <ng-template #footer>
-          <p-button label="Ver Detalhes" icon="pi pi-eye" styleClass="p-button-outlined w-full"
-                    [routerLink]="['/receitas', receita.id]"></p-button>
-        </ng-template>
-      </p-card>
-    </div>
+
+  <div class="recipe-grid">
+    @for (receita of receitas; track receita) {
+      <div class="recipe-card-wrapper">
+        <p-card [header]="receita.nome" [subheader]="receita.categoria">
+          <div class="recipe-prep-time">
+            <i class="pi pi-clock"></i>
+            <span>Tempo de preparo: {{ receita.tempoPreparo }} min</span>
+          </div>
+          <ng-template #footer>
+            <p-button label="Ver Detalhes" icon="pi pi-eye" styleClass="recipe-card-action p-button-outlined"
+                      [routerLink]="['/receitas', receita.id]"></p-button>
+          </ng-template>
+        </p-card>
+      </div>
+    }
   </div>
 </div>
