@@ -8,7 +8,7 @@ import { Receita } from '../models/receita.model';
 })
 export class RecipeService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://localhost:8000/api/receitas';
+  private apiUrl = 'http://localhost:8080/api/receitas';
 
   getRecipes(): Observable<Receita[]> {
     return this.http.get<Receita[]>(this.apiUrl);
