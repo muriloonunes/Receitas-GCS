@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/receitas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReceitasController {
     private final ReceitasService service;
 
