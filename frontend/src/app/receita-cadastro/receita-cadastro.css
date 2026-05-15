@@ -1,0 +1,61 @@
+.form-container {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+::ng-deep .back-button.p-button {
+  padding: 0.5rem;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Forçar inputs a ocuparem 100% da largura do container flex */
+::ng-deep .field p-select,
+::ng-deep .field p-inputNumber,
+::ng-deep .field p-chips,
+::ng-deep .field input,
+::ng-deep .field textarea {
+  width: 100% !important;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+}
+
+.p-error {
+  color: #ef4444; /* Vermelho padrão do PrimeNG */
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}

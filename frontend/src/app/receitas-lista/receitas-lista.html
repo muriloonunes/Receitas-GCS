@@ -1,7 +1,7 @@
 <div class="recipe-list-container">
   <header class="recipe-list-header">
     <h2 class="titulo-principal">Minhas Receitas</h2>
-    <p-button label="Nova Receita" icon="pi pi-plus" routerLink="/receitas/nova"></p-button>
+    <p-button label="Nova Receita" icon="pi pi-plus" (onClick)="criarReceita()"></p-button>
   </header>
 
   @if (receitas.length === 0) {
