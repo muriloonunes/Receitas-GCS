@@ -1,0 +1,80 @@
+<div class="form-container">
+  <p-toast></p-toast>
+  <header>
+    <div class="header-content">
+      <p-button icon="pi pi-arrow-left" variant="text" (onClick)="voltar()" styleClass="back-button"></p-button>
+      <h2 class="titulo-secundario">Nova Receita</h2>
+    </div>
+  </header>
+
+  <p-card>
+    <form class="recipe-form" #formReceita="ngForm">
+      <div class="field">
+        <label for="nome">Nome da Receita</label>
+        <input pInputText id="nome" [(ngModel)]="receita.nome" name="nome" placeholder="Ex: Mousse de Chocolate"
+               required [minlength]="3" #nomeVar="ngModel"
+               [ngClass]="{'ng-invalid ng-dirty': nomeVar.invalid && (nomeVar.dirty || nomeVar.touched)}" />
+        @if (nomeVar.invalid && (nomeVar.dirty || nomeVar.touched)) {
+          <small class="p-error">O nome é obrigatório e deve ter no mínimo 3 caracteres.</small>
+        }
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="categoria">Categoria</label>
+          <p-select [options]="categoriasOpcoes" [(ngModel)]="receita.categoria"
+                    name="categoria" optionLabel="label" optionValue="value"
+                    required #catVar="ngModel"></p-select>
+        </div>
+
+        <div class="field">
+          <label for="tempo">Tempo (min)</label>
+          <p-inputNumber id="tempo" [(ngModel)]="receita.tempoPreparo" name="tempoPreparo" [min]="1" suffix=" min"
+                         [showButtons]="true" buttonLayout="stacked" #tempoVar="ngModel"
+                         [ngClass]="{'ng-invalid ng-dirty': tempoVar.invalid && (tempoVar.dirty || tempoVar.touched)}"></p-inputNumber>
+          @if (tempoVar.invalid && (tempoVar.dirty || tempoVar.touched)) {
+            <small class="p-error">O tempo mínimo é de 1 minuto.</small>
+          }
+        </div>
+
+        <div class="field">
+          <label for="porcoes">Porções</label>
+          <p-inputNumber id="porcoes" [(ngModel)]="receita.porcoes" name="porcoes" [min]="1"
+                         [showButtons]="true" buttonLayout="stacked" required #porcoesVar="ngModel"
+                         [ngClass]="{'ng-invalid ng-dirty': porcoesVar.invalid && (porcoesVar.dirty || porcoesVar.touched)}"></p-inputNumber>
+          @if (porcoesVar.invalid && (porcoesVar.dirty || porcoesVar.touched)) {
+            <small class="p-error">A receita deve render no mínimo 1 porção.</small>
+          }
+        </div>
+      </div>
+
+      <div class="field col-span-full">
+        <label>Ingredientes (digite e pressione Enter)</label>
+        <p-autoComplete id="ingredientes" [(ngModel)]="receita.ingredientes" name="ingredientes"
+                        [multiple]="true" [typeahead]="false" placeholder="2 xícaras de açúcar"
+                        #ingredientesVar="ngModel"
+                        [ngClass]="{'ng-invalid ng-dirty':(receita.ingredientes.length === 0 && ingredientesVar.touched) }"></p-autoComplete>
+        @if (receita.ingredientes.length === 0 && ingredientesVar.touched) {
+          <small class="p-error">Adicione pelo menos um ingrediente.</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="preparo">Modo de Preparo</label>
+        <textarea pTextarea id="preparo" [(ngModel)]="receita.modoPreparo" name="modoPreparo" rows="5"
+                  required [minlength]="10" #preparoVar="ngModel"
+                  [ngClass]="{'ng-invalid ng-dirty': preparoVar.invalid && (preparoVar.dirty || preparoVar.touched)}"
+                  placeholder="Descreva o passo a passo..."></textarea>
+        @if (preparoVar.invalid && (preparoVar.dirty || preparoVar.touched)) {
+          <small class="p-error">O modo de preparo deve ter no mínimo 10 caracteres.</small>
+        }
+      </div>
+
+      <div class="form-actions">
+        <p-button label="Cancelar" variant="text" severity="secondary" routerLink="/receitas"></p-button>
+        <p-button label="Salvar Receita" icon="pi pi-check" (onClick)="salvar()"
+                  [disabled]="formReceita.invalid || receita.ingredientes.length === 0"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>
