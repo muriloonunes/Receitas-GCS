@@ -1,6 +1,6 @@
 export type Categoria = 'DOCE' | 'SALGADO' | 'BEBIDA' | 'SOBREMESA';
 
-export interface Recipe {
+export interface Receita {
   id?: number;
   nome: string;
   categoria: Categoria;
