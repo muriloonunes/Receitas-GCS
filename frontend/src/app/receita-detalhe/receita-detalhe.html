@@ -1,0 +1,50 @@
+<div class="detail-container">
+  <p-toast></p-toast>
+  <p-confirmDialog></p-confirmDialog>
+
+  <header class="detail-header">
+    <div class="header-content">
+      <p-button icon="pi pi-arrow-left" variant="text" (onClick)="voltar()" styleClass="back-button"></p-button>
+      <h2 class="titulo-secundario">Detalhes da Receita</h2>
+    </div>
+
+    <p-button icon="pi pi-trash" label="Excluir" variant="text" severity="danger" (onClick)="confirmarExclusao()"></p-button>
+  </header>
+
+  @if (receita) {
+    <p-card class="recipe-detail-card">
+
+      <div class="recipe-title-section">
+        <h1 class="titulo-principal">{{ receita.nome }}</h1>
+        <div class="recipe-badges">
+          <p-tag [value]="formatarCategoria(receita.categoria)" severity="secondary"></p-tag>
+          <p-tag icon="pi pi-clock" [value]="receita.tempoPreparo + ' min'" severity="secondary"></p-tag>
+          <p-tag icon="pi pi-users" [value]="receita.porcoes + ' porções'" severity="secondary"></p-tag>
+        </div>
+      </div>
+
+      <div class="recipe-content-section">
+        <h3 class="section-title"><i class="pi pi-list"></i> Ingredientes</h3>
+        <ul class="ingredients-list">
+          @for (ingrediente of receita.ingredientes; track $index) {
+            <li>
+              <i class="pi pi-check-circle ingredient-icon"></i>
+              <span>{{ ingrediente }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="recipe-content-section">
+        <h3 class="section-title"><i class="pi pi-book"></i> Modo de Preparo</h3>
+        <p class="preparation-text">{{ receita.modoPreparo }}</p>
+      </div>
+
+    </p-card>
+  } @else {
+    <div class="loading-state">
+      <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+      <p>Buscando receita...</p>
+    </div>
+  }
+</div>

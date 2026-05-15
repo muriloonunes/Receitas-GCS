@@ -34,7 +34,7 @@
           <ng-template #footer>
             <div class="recipe-card-footer-row">
               <p-button label="Ver Detalhes" icon="pi pi-angle-right" iconPos="right" variant="text"
-                        styleClass="recipe-card-action-link" [routerLink]="['/receitas', receita.id]"></p-button>
+                        styleClass="recipe-card-action-link" (click)="verDetalhe(receita.id)"></p-button>
             </div>
           </ng-template>
         </p-card>

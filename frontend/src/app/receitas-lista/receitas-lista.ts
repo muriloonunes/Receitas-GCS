@@ -2,14 +2,14 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Card } from 'primeng/card';
 import { Button } from 'primeng/button';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { RecipeService } from '../service/recipe-service';
 import { Receita } from '../models/receita.model';
 import { Tag } from 'primeng/tag';
 
 @Component({
   selector: 'app-receitas-lista',
-  imports: [FormsModule, Card, Button, RouterLink, Tag],
+  imports: [FormsModule, Card, Button, Tag],
   templateUrl: './receitas-lista.html',
   styleUrl: './receitas-lista.css',
 })
@@ -44,5 +44,11 @@ export class ReceitasLista implements OnInit {
 
   criarReceita() {
     this.router.navigate(['/receitas/nova']);
+  }
+
+  verDetalhe(id: number | undefined) {
+    if (id) {
+      this.router.navigate(['/receitas', id]);
+    }
   }
 }
