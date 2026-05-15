@@ -5,10 +5,11 @@ import { Button } from 'primeng/button';
 import { RouterLink } from '@angular/router';
 import { RecipeService } from '../service/recipe-service';
 import { Receita } from '../models/receita.model';
+import { Tag } from 'primeng/tag';
 
 @Component({
   selector: 'app-receitas-lista',
-  imports: [FormsModule, Card, Button, RouterLink],
+  imports: [FormsModule, Card, Button, RouterLink, Tag],
   templateUrl: './receitas-lista.html',
   styleUrl: './receitas-lista.css',
 })
@@ -66,6 +67,14 @@ export class ReceitasLista implements OnInit {
 
   ngOnInit(): void {
     this.carregarReceitas();
+  }
+
+  isReceitaNova(date: string | undefined): boolean {
+    if (!date) return false;
+    const now = new Date();
+    const receitaDate = new Date(date);
+    const diferencaDias = Math.floor((now.getTime() - receitaDate.getTime()) / (1000 * 3600 * 24));
+    return diferencaDias < 1;
   }
 
   private carregarReceitas(): void {
