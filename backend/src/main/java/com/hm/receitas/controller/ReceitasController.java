@@ -36,11 +36,6 @@ public class ReceitasController {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Receita> atualizar(@PathVariable Long id, @Valid @RequestBody Receita receita) {
-        return ResponseEntity.ok(service.atualizar(id, receita));
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);
