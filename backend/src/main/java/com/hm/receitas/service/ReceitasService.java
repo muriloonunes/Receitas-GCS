@@ -6,6 +6,7 @@ import com.hm.receitas.repository.ReceitasRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.data.domain.Sort;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,7 +48,7 @@ public class ReceitasService {
     }
 
     public List<Receita> listarTodos() {
-        return receitasRepository.findAll();
+        return receitasRepository.findAll(Sort.by(Sort.Direction.DESC, "dataCadastro"));
     }
 
     public Receita buscarPorId(Long id) {
