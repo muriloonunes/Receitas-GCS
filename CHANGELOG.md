@@ -2,6 +2,14 @@
 Todas as mudanças notáveis neste projeto serão documentadas aqui.
 Formato: https://keepachangelog.com
 
+## [1.1.0] - 2026-05-18
+### Added
+- RF02: Adicionada barra de busca de receitas na tela de listagem
+- Layout da tela de detalhes da receita melhorado
+### Fixed
+- Corrigidos cartões de receitas que tinham alturas diferentes
+- Corrigida categoria da receita mostrada em caps lock na tela de listagem
+
 ## [1.0.1] - 2026-05-18
 ### Fixed
 - Corrigida validação do campo Tempo: valor 0 agora é corretamente rejeitado (#20)
