@@ -1,6 +1,12 @@
 # Changelog
 Todas as mudanças notáveis neste projeto serão documentadas aqui.
 Formato: https://keepachangelog.com
+
+## [1.0.1] - 2026-05-18
+### Fixed
+- Corrigida validação do campo Tempo: valor 0 agora é corretamente rejeitado (#20)
+- Botão Salvar permanece desabilitado quando tempo <= 0
+
 ## [1.0.0] - 2026-05-17
 ### Added
 - RF01: Listagem de receitas com cards (nome, categoria, tempo de preparo) (#1)
