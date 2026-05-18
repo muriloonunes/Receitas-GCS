@@ -10,10 +10,6 @@
   gap: 1rem;
 }
 
-::ng-deep .back-button.p-button {
-  padding: 0.5rem;
-}
-
 .recipe-form {
   display: flex;
   flex-direction: column;
