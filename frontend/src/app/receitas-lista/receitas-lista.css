@@ -1,0 +1,69 @@
+.recipe-list-container {
+  padding: 1.5rem;
+}
+
+.recipe-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-list-header h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.recipe-empty-state {
+  text-align: center;
+  padding: 3rem;
+  border-radius: 8px;
+}
+
+.recipe-empty-state-text {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+.recipe-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.recipe-card-header-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.75rem;
+}
+
+.recipe-card-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+.recipe-card-header-row p-tag {
+  flex-shrink: 0;
+}
+
+.recipe-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-card-footer-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

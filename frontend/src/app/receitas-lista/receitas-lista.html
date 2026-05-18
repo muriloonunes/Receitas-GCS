@@ -1,0 +1,44 @@
+<div class="recipe-list-container">
+  <header class="recipe-list-header">
+    <h2 class="titulo-principal">Minhas Receitas</h2>
+    <p-button label="Nova Receita" icon="pi pi-plus" (onClick)="criarReceita()"></p-button>
+  </header>
+
+  @if (receitas.length === 0) {
+    <div class="recipe-empty-state">
+      <p class="recipe-empty-state-text">Nenhuma receita encontrada.</p>
+      <p class="recipe-empty-state-text">Que tal cadastrar sua primeira?</p>
+    </div>
+  }
+
+  <div class="recipe-grid">
+    @for (receita of receitas; track receita) {
+      <div class="recipe-card-wrapper">
+        <p-card [class]="'p-card-border'">
+          <ng-template #content>
+            <div class="recipe-card-header-row">
+              <h3 class="recipe-card-title">{{ receita.nome }}</h3>
+              @if (isReceitaNova(receita.dataCadastro)) {
+                <p-tag value="Novo" severity="success" />
+              }
+            </div>
+
+            <div class="recipe-badges-row">
+              <p-tag value="{{receita.categoria}} " severity="secondary"/>
+              <p-tag icon="pi pi-clock" value="{{receita.tempoPreparo}} min" severity="secondary"/>
+              <p-tag icon="pi pi-book" value="{{receita.ingredientes.length}} ing." severity="secondary"/>
+              <p-tag icon="pi pi-users" value="{{receita.porcoes}} por." severity="secondary"/>
+            </div>
+          </ng-template>
+
+          <ng-template #footer>
+            <div class="recipe-card-footer-row">
+              <p-button label="Ver Detalhes" icon="pi pi-angle-right" iconPos="right" variant="text"
+                        styleClass="recipe-card-action-link" (click)="verDetalhe(receita.id)"></p-button>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    }
+  </div>
+</div>
