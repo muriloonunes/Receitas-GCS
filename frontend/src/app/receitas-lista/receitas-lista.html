@@ -9,10 +9,18 @@
       <p class="recipe-empty-state-text">Nenhuma receita encontrada.</p>
       <p class="recipe-empty-state-text">Que tal cadastrar sua primeira?</p>
     </div>
+  } @else {
+    <div class="search-bar">
+      <p-iconfield>
+        <p-inputicon class="pi pi-search"></p-inputicon>
+        <input pInputText type="text" [(ngModel)]="filtroReceitas" placeholder="Pesquisar receita" class="search-input"
+               (input)="filtrarReceitas()">
+      </p-iconfield>
+    </div>
   }
 
   <div class="recipe-grid">
-    @for (receita of receitas; track receita) {
+    @for (receita of receitasFiltradas; track receita) {
       <div class="recipe-card-wrapper">
         <p-card [class]="'p-card-border'">
           <ng-template #content>
@@ -24,10 +32,10 @@
             </div>
 
             <div class="recipe-badges-row">
-              <p-tag value="{{receita.categoria}} " severity="secondary"/>
-              <p-tag icon="pi pi-clock" value="{{receita.tempoPreparo}} min" severity="secondary"/>
-              <p-tag icon="pi pi-book" value="{{receita.ingredientes.length}} ing." severity="secondary"/>
-              <p-tag icon="pi pi-users" value="{{receita.porcoes}} por." severity="secondary"/>
+              <p-tag value="{{formatarCategoria(receita.categoria)}} " severity="secondary" />
+              <p-tag icon="pi pi-clock" value="{{receita.tempoPreparo}} min" severity="secondary" />
+              <p-tag icon="pi pi-book" value="{{receita.ingredientes.length}} ing." severity="secondary" />
+              <p-tag icon="pi pi-users" value="{{receita.porcoes}} por." severity="secondary" />
             </div>
           </ng-template>
 
@@ -39,6 +47,13 @@
           </ng-template>
         </p-card>
       </div>
+    } @empty {
+      @if (receitas.length !== 0) {
+        <div class="recipe-empty-state">
+          <p class="recipe-empty-state-text">Nenhuma receita encontrada para "<strong>{{ filtroReceitas }}</strong>"
+          </p>
+        </div>
+      }
     }
   </div>
 </div>

@@ -1,46 +1,59 @@
 .detail-container {
-  padding: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .detail-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  gap: 1.5rem;
 }
 
 .header-content {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.title-and-badges {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.recipe-title {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+}
+
+.recipe-header-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.delete-btn {
+  flex-shrink: 0;
 }
 
 ::ng-deep .back-button.p-button {
   padding: 0.5rem;
-}
-
-.recipe-title-section {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-}
-
-.recipe-title-section h1 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.recipe-badges {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-shrink: 0;
 }
 
 .recipe-content-section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .recipe-content-section:last-child {
