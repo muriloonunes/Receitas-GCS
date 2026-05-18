@@ -48,9 +48,12 @@
         </p-card>
       </div>
     } @empty {
-      <div class="recipe-empty-state">
-        <p class="recipe-empty-state-text">Nenhuma receita encontrada para "<strong>{{ filtroReceitas }}</strong>".</p>
-      </div>
+      @if (receitas.length !== 0) {
+        <div class="recipe-empty-state">
+          <p class="recipe-empty-state-text">Nenhuma receita encontrada para "<strong>{{ filtroReceitas }}</strong>"
+          </p>
+        </div>
+      }
     }
   </div>
 </div>
