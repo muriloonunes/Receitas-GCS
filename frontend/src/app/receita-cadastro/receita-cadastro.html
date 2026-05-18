@@ -30,9 +30,9 @@
         <div class="field">
           <label for="tempo">Tempo (min)</label>
           <p-inputNumber id="tempo" [(ngModel)]="receita.tempoPreparo" name="tempoPreparo" [min]="1" suffix=" min"
-                         [showButtons]="true" buttonLayout="stacked" #tempoVar="ngModel"
+                         [showButtons]="true" buttonLayout="stacked" required #tempoVar="ngModel"
                          [ngClass]="{'ng-invalid ng-dirty': tempoVar.invalid && (tempoVar.dirty || tempoVar.touched)}"></p-inputNumber>
-          @if (tempoVar.invalid && (tempoVar.dirty || tempoVar.touched)) {
+          @if (tempoVar.invalid && (tempoVar.dirty || tempoVar.touched) ) {
             <small class="p-error">O tempo mínimo é de 1 minuto.</small>
           }
         </div>
