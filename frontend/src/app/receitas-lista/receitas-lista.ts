@@ -6,10 +6,13 @@ import { Router } from '@angular/router';
 import { RecipeService } from '../service/recipe-service';
 import { Receita } from '../models/receita.model';
 import { Tag } from 'primeng/tag';
+import { InputText } from 'primeng/inputtext';
+import { IconField } from 'primeng/iconfield';
+import { InputIcon } from 'primeng/inputicon';
 
 @Component({
   selector: 'app-receitas-lista',
-  imports: [FormsModule, Card, Button, Tag],
+  imports: [FormsModule, Card, Button, Tag, InputText, IconField, InputIcon],
   templateUrl: './receitas-lista.html',
   styleUrl: './receitas-lista.css',
 })
@@ -19,6 +22,8 @@ export class ReceitasLista implements OnInit {
   private cd = inject(ChangeDetectorRef);
 
   receitas: Receita[] = [];
+  receitasFiltradas: Receita[] = [];
+  filtroReceitas: string = '';
 
   ngOnInit(): void {
     this.carregarReceitas();
@@ -36,6 +41,7 @@ export class ReceitasLista implements OnInit {
     this.recipeService.getRecipes().subscribe({
       next: (receitas) => {
         this.receitas = receitas;
+        this.filtrarReceitas();
         this.cd.markForCheck();
       },
       error: (err) => console.error('Erro ao buscar receitas', err),
@@ -50,5 +56,20 @@ export class ReceitasLista implements OnInit {
     if (id) {
       this.router.navigate(['/receitas', id]);
     }
+  }
+
+  protected filtrarReceitas() {
+    if (!this.filtroReceitas || this.filtroReceitas.trim() === '') {
+      this.receitasFiltradas = [...this.receitas];
+    } else {
+      const filtro = this.filtroReceitas.toLowerCase();
+      this.receitasFiltradas = this.receitas.filter(
+        (receita) =>
+          receita.nome.toLowerCase().includes(filtro) ||
+          (receita.ingredientes &&
+            receita.ingredientes.some((ing) => ing.toLowerCase().includes(filtro))),
+      );
+    }
+    this.cd.markForCheck();
   }
 }
