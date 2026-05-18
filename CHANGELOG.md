@@ -10,7 +10,6 @@ Formato: https://keepachangelog.com
 - RF03: Mensagens de erro específicas por campo (#2)
 - RF03: Redirecionamento para listagem após cadastro com sucesso (#2)
 - CI: Pipeline GitHub Actions — build backend (Maven) e frontend (Angular)
-- DataLoader com 3 receitas iniciais para demonstração
 ### Technical
 - Entidade Recipe com validações Bean Validation (@Valid)
 - Branch protection configurado no main (PR + CI obrigatórios)
