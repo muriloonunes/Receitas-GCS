@@ -32,7 +32,7 @@
             </div>
 
             <div class="recipe-badges-row">
-              <p-tag value="{{receita.categoria}} " severity="secondary" />
+              <p-tag value="{{formatarCategoria(receita.categoria)}} " severity="secondary" />
               <p-tag icon="pi pi-clock" value="{{receita.tempoPreparo}} min" severity="secondary" />
               <p-tag icon="pi pi-book" value="{{receita.ingredientes.length}} ing." severity="secondary" />
               <p-tag icon="pi pi-users" value="{{receita.porcoes}} por." severity="secondary" />

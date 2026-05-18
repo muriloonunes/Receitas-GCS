@@ -58,6 +58,11 @@ export class ReceitasLista implements OnInit {
     }
   }
 
+  formatarCategoria(categoria: string): string {
+    if (!categoria) return '';
+    return categoria.charAt(0).toUpperCase() + categoria.slice(1).toLowerCase();
+  }
+
   protected filtrarReceitas() {
     if (!this.filtroReceitas || this.filtroReceitas.trim() === '') {
       this.receitasFiltradas = [...this.receitas];
